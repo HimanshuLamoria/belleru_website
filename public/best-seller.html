@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Seller | Belleru Jewellery</title>
+  <meta name="description" content="Shop Belleru artificial jewellery: elegant necklaces, earrings, rings, bangles and festive sets made for modern Indian styling at accessible prices." />
+  <meta name="keywords" content="Belleru, artificial jewellery, fashion jewellery, imitation jewellery, necklaces, earrings, rings, bangles, Indian jewellery startup" />
+  <meta name="author" content="Belleru" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://belleru.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Belleru | Premium Artificial Jewellery" />
+  <meta property="og:description" content="Affordable statement jewellery for festive days, office looks and gifting." />
+  <meta property="og:image" content="https://images.pexels.com/photos/7541807/pexels-photo-7541807.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "Belleru",
+    "url": "https://belleru.com/",
+    "image": "https://images.pexels.com/photos/7541807/pexels-photo-7541807.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "description": "Premium artificial and fashion jewellery for modern Indian wardrobes.",
+    "priceRange": "INR 399-2499",
+    "areaServed": "IN"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-best-seller" data-page="best-seller">
+  
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="brand" href="index.html" aria-label="Belleru homepage">
+        <span class="brand-mark">Belleru</span>
+        <span class="brand-line">Artificial Jewellery</span>
+      </a>
+      <nav class="primary-nav" id="nav" aria-label="Primary navigation">
+        <a href="index.html#categories">Categories</a>
+        <a href="new-arrival.html" class="nav-highlight">New Arrival</a>
+        <a href="best-seller.html" class="nav-highlight">Best Seller</a>
+        <a href="collections.html">Collections</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggle" type="button" aria-label="Search products"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn wishlist-header" id="wishlistToggle" type="button" aria-label="Open wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="wishlist-count" id="wishlistCount">0</span>
+        </button>
+        <button class="icon-btn cart-btn" id="cartToggle" type="button" aria-label="Open cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+    <form class="search-bar" id="searchBar" role="search">
+      <input id="searchInput" type="search" placeholder="Search necklaces, hoops, rings..." aria-label="Search products" />
+      <button class="search-submit" type="submit">Search</button>
+      <button class="search-close" id="searchClose" type="button" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+    </form>
+    <div class="mobile-chip-bar" aria-label="Popular shopping links">
+      <a href="index.html#categories">Categories</a>
+      <a href="new-arrival.html">New</a>
+      <a href="best-seller.html">Best Seller</a>
+      <a href="collections.html#occasion">Occasion</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <main>
+    <br>  
+    <section class="hero hero-carousel" id="home" aria-label="Belleru featured photo carousel">
+      <input class="hero-upload" id="heroUpload" type="file" accept="image/*" multiple aria-label="Upload 4 hero photos" />
+      <div class="hero-slider" id="heroSlider" role="button" tabindex="0" aria-label="Upload 4 hero photos">
+        <img class="hero-slide active" src="first-image1.jpg" alt="Jewellery campaign banner one" />
+        <img class="hero-slide" src="first-image2.jpg" alt="Jewellery campaign banner two" />
+        <img class="hero-slide" src="first-image3.jpg" alt="Jewellery campaign banner three" />
+        <img class="hero-slide" src="first-image4.jpg" alt="Jewellery campaign banner four" />
+      </div>
+      <div class="hero-dots" id="heroDots" aria-label="Hero carousel controls">
+        <button class="active" type="button" aria-label="Show photo 1"></button>
+        <button type="button" aria-label="Show photo 2"></button>
+        <button type="button" aria-label="Show photo 3"></button>
+        <button type="button" aria-label="Show photo 4"></button>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Shopping benefits">
+      <div class="container trust-grid">
+        <div class="trust-item"><i class="fa-regular fa-gem"></i><span><strong>Premium finish</strong>Anti-tarnish plated styles</span></div>
+        <div class="trust-item"><i class="fa-solid fa-truck-fast"></i><span><strong>Fast delivery</strong>Pan India shipping</span></div>
+        <div class="trust-item"><i class="fa-solid fa-rotate-left"></i><span><strong>Easy exchange</strong>7-day support window</span></div>
+        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span><strong>Secure checkout</strong>UPI, cards and wallets</span></div>
+      </div>
+    </section>
+
+    <section class="brand-trust section" aria-label="Trusted by customers">
+      <div class="container trust-metrics">
+        <article class="metric-card reveal"><strong>10,000+</strong><span>Happy customers</span></article>
+        <article class="metric-card reveal"><strong>4.8<i class="fa-solid fa-star"></i></strong><span>Average rating</span></article>
+        <article class="metric-card reveal"><strong>Pan India</strong><span>Delivery support</span></article>
+        <article class="metric-card reveal"><strong>Premium</strong><span>Gift-ready packaging</span></article>
+      </div>
+    </section>
+
+    <section class="categories section" id="categories" aria-label="Shop by category">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Shop by category</p>
+            <h2>Find the piece you came for.</h2>
+          </div>
+          <a class="text-link" href="best-seller.html">View all products <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="category-grid">
+          <a class="category-card reveal" href="best-seller.html" data-category-link="necklaces">
+            <img src="https://images.pexels.com/photos/5475373/pexels-photo-5475373.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Necklace category" loading="lazy" />
+            <span>Necklaces</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="earrings">
+            <img src="https://images.pexels.com/photos/5673960/pexels-photo-5673960.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Earrings category" loading="lazy" />
+            <span>Earrings</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="rings">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=500&q=80" alt="Rings category" loading="lazy" />
+            <span>Rings</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="bracelets">
+            <img src="https://images.pexels.com/photos/12824885/pexels-photo-12824885.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Bracelets category" loading="lazy" />
+            <span>Bracelets</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="anklets">
+            <img src="https://images.pexels.com/photos/1191536/pexels-photo-1191536.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Anklets category" loading="lazy" />
+            <span>Anklets</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="mangalsutra">
+            <img src="https://images.pexels.com/photos/5116272/pexels-photo-5116272.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Mangalsutra category" loading="lazy" />
+            <span>Mangalsutra</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="nosepins">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80" alt="Nose pins category" loading="lazy" />
+            <span>Nose Pins</span>
+          </a>
+          <a class="category-card reveal" href="best-seller.html" data-category-link="hair">
+            <img src="https://images.pexels.com/photos/20858959/pexels-photo-20858959.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Hair accessories category" loading="lazy" />
+            <span>Hair Accessories</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="occasion section" id="occasion" aria-label="Shop by occasion">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Shop by occasion</p>
+            <h2>Jewellery styled for the moment.</h2>
+          </div>
+          <p class="section-note"></p>
+        </div>
+        <div class="occasion-grid">
+          <a class="occasion-card reveal" href="best-seller.html"><img src="693d5616d18678fc5396cc6f176eac47.jpg" alt="Wedding jewellery styling" loading="lazy" /><span>Wedding</span></a>
+          <a class="occasion-card reveal" href="best-seller.html"><img src="https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Party jewellery styling" loading="lazy" /><span>Party</span></a>
+          <a class="occasion-card reveal" href="best-seller.html"><img src="https://images.pexels.com/photos/9482094/pexels-photo-9482094.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Daily wear jewellery styling" loading="lazy" /><span>Daily Wear</span></a>
+          <a class="occasion-card reveal" href="best-seller.html"><img src="53de9b3d63620ba1012ed2a1979e7614.jpg" alt="Office jewellery styling" loading="lazy" /><span>Office</span></a>
+          <a class="occasion-card reveal" href="best-seller.html"><img src="1fcbfe8d5609f2b9de0a924f39d5bb12.jpg" alt="Festive jewellery styling" loading="lazy" /><span>Festive</span></a>
+        </div>
+      </div>
+    </section>
+
+        <section class="section bestsellers" id="bestsellers" aria-label="Bestselling products">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Category-wise shopping</p>
+            <h2>Best Seller picks and new drops.</h2>
+          </div>
+          <div class="filter-tabs" aria-label="Filter products">
+            <button class="filter-tab active" type="button" data-filter="all">All</button>
+            <button class="filter-tab" type="button" data-filter="new">New Arrival</button>
+            <button class="filter-tab" type="button" data-filter="best">Best Seller</button>
+            <button class="filter-tab" type="button" data-filter="necklaces">Necklaces</button>
+            <button class="filter-tab" type="button" data-filter="earrings">Earrings</button>
+            <button class="filter-tab" type="button" data-filter="rings">Rings</button>
+            <button class="filter-tab" type="button" data-filter="bracelets">Bracelets</button>
+            <button class="filter-tab" type="button" data-filter="anklets">Anklets</button>
+            <button class="filter-tab" type="button" data-filter="mangalsutra">Mangalsutra</button>
+            <button class="filter-tab" type="button" data-filter="nosepins">Nose Pins</button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productsGrid">
+          <article class="product-card reveal" data-category="necklaces" data-tags="new best">
+            <div class="product-media">
+              <img class="product-img" src="https://images.pexels.com/photos/5475373/pexels-photo-5475373.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Layered Luna artificial necklace" loading="lazy" />
+              <span class="badge">New Arrival</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Layered Luna Necklace to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Necklaces</p><h3>Layered Luna Necklace</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>4.7</span></div><div class="price"><strong>&#8377;899</strong><s>&#8377;1,499</s><span>40% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="earrings" data-tags="new">
+            <div class="product-media">
+              <img class="product-img" src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=700&q=80" alt="Pearl drop artificial earrings" loading="lazy" />
+              <span class="badge soft">Trending</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Pearl Drop Hoops to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Earrings</p><h3>Pearl Drop Hoops</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>4.9</span></div><div class="price"><strong>&#8377;649</strong><s>&#8377;999</s><span>35% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="rings" data-tags="best">
+            <div class="product-media">
+              <img class="product-img" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80" alt="Stackable artificial rings" loading="lazy" />
+              <span class="badge">Best Seller</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Mira Stack Ring Set to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Rings</p><h3>Mira Stack Ring Set</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>4.4</span></div><div class="price"><strong>&#8377;499</strong><s>&#8377;799</s><span>38% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="bracelets" data-tags="best">
+            <div class="product-media">
+              <img class="product-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=80" alt="Charm bracelet artificial jewellery" loading="lazy" />
+              <span class="badge soft">Gift pick</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Charm Bracelet to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Bracelets</p><h3>Charm Bracelet</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>4.6</span></div><div class="price"><strong>&#8377;749</strong><s>&#8377;1,199</s><span>38% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="earrings" data-tags="best">
+            <div class="product-media">
+              <img class="product-img" src="https://images.pexels.com/photos/5673960/pexels-photo-5673960.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Traditional jhumka set artificial jewellery" loading="lazy" />
+              <span class="badge">Festive</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Riva Jhumka Set to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Earrings</p><h3>Riva Jhumka Set</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>4.8</span></div><div class="price"><strong>&#8377;1,199</strong><s>&#8377;1,899</s><span>37% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="necklaces" data-tags="new">
+            <div class="product-media">
+              <img class="product-img" src="https://images.pexels.com/photos/35759124/pexels-photo-35759124.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Delicate pendant necklace on skin" loading="lazy" />
+              <span class="badge soft">Minimal</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Aira Pendant Chain to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Necklaces</p><h3>Aira Pendant Chain</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>4.3</span></div><div class="price"><strong>&#8377;599</strong><s>&#8377;999</s><span>40% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="anklets" data-tags="new">
+            <div class="product-media">
+              <img class="product-img" src="https://images.pexels.com/photos/1191536/pexels-photo-1191536.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Delicate artificial anklet" loading="lazy" />
+              <span class="badge">New Arrival</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Noor Layered Anklet to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Anklets</p><h3>Noor Layered Anklet</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><span>4.5</span></div><div class="price"><strong>&#8377;449</strong><s>&#8377;799</s><span>44% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="mangalsutra" data-tags="best">
+            <div class="product-media">
+              <img class="product-img" src="https://images.pexels.com/photos/5116272/pexels-photo-5116272.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Minimal black bead mangalsutra style necklace" loading="lazy" />
+              <span class="badge">Best Seller</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Siya Daily Mangalsutra to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Mangalsutra</p><h3>Siya Daily Mangalsutra</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span>4.9</span></div><div class="price"><strong>&#8377;799</strong><s>&#8377;1,299</s><span>38% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+          <article class="product-card reveal" data-category="nosepins" data-tags="new">
+            <div class="product-media">
+              <img class="product-img" src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=700&q=80" alt="Fashion nose pin jewellery close up" loading="lazy" />
+              <span class="badge soft">New Arrival</span>
+              <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add Tiny Bloom Nose Pin to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+            </div>
+            <div class="product-info"><p>Nose Pins</p><h3>Tiny Bloom Nose Pin</h3><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><span>4.2</span></div><div class="price"><strong>&#8377;299</strong><s>&#8377;499</s><span>40% off</span></div><button class="btn add-cart" type="button">Add to Cart</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="collections section" id="collections" aria-label="Shop by collection">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Shop by mood</p>
+          <h2>Collections for every plan on your calendar.</h2>
+        </div>
+        <div class="collection-grid">
+          <article class="collection-card tall reveal">
+            <img src="https://images.pexels.com/photos/5673960/pexels-photo-5673960.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Silver toned necklace and earrings set" loading="lazy" />
+            <div><span>Occasion Sets</span><h3>Festive Ready</h3><a href="best-seller.html">Shop now <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="collection-card reveal">
+            <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=900&q=80" alt="Elegant artificial earrings close up" loading="lazy" />
+            <div><span>Daily Shine</span><h3>Earrings</h3><a href="best-seller.html">Shop now <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="collection-card reveal">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80" alt="Stack of fashion rings" loading="lazy" />
+            <div><span>Stack & Style</span><h3>Rings</h3><a href="best-seller.html">Shop now <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="collection-card wide reveal">
+            <img src="https://images.pexels.com/photos/5475373/pexels-photo-5475373.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Layered silver necklace worn on neck" loading="lazy" />
+            <div><span>Minimal Layers</span><h3>Necklaces</h3><a href="best-seller.html">Shop now <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section merch-highlights" id="new-arrivals" aria-label="New arrivals and best sellers">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Fresh and loved</p>
+          <h2>New Arrival and Best Seller highlights.</h2>
+        </div>
+        <div class="highlight-grid">
+          <article class="highlight-panel highlight-panel--new reveal">
+            <div>
+              <span class="highlight-kicker">New Arrival</span>
+              <h3>Modern pearls, rose-gold polish and fresh minimal chains.</h3>
+              <br>
+              <br>
+              <br><br>
+              
+              <a class="btn btn-primary" href="best-seller.html" data-filter-link="new">Shop New Arrival</a>
+            </div>
+          </article>
+          <article class="highlight-panel highlight-panel--best reveal">
+            <div>
+              <span class="highlight-kicker">Best Seller</span>
+              <h3>Most-loved pieces with proven gifting appeal.</h3>
+              <br>
+              <br>
+              <br><br>
+              
+              <a class="btn btn-secondary" href="best-seller.html" data-filter-link="best">Shop Best Sellers</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="reels section" aria-label="Instagram reels showcase">
+      <div class="container">
+        <div class="section-heading split">
+          <div>
+            <p class="eyebrow">Style reels</p>
+            <h2>Jewellery in motion.</h2>
+          </div>
+          <a class="text-link" href="contact.html">Follow our styling drops <i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div class="reel-grid">
+          <article class="reel-card reveal">
+            <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/7541807/pexels-photo-7541807.jpeg?auto=compress&cs=tinysrgb&w=700">
+              <source src="https://cdn.pixabay.com/video/2024/07/03/219228_large.mp4" type="video/mp4" />
+            </video>
+            <span>Customer styling</span>
+          </article>
+          <article class="reel-card reveal">
+            <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/5475373/pexels-photo-5475373.jpeg?auto=compress&cs=tinysrgb&w=700">
+              <source src="https://cdn.pixabay.com/video/2021/09/29/90234-617678602_large.mp4" type="video/mp4" />
+            </video>
+            <span>Close-up shine</span>
+          </article>
+          <article class="reel-card reveal">
+            <video autoplay muted loop playsinline poster="https://images.pexels.com/photos/5673960/pexels-photo-5673960.jpeg?auto=compress&cs=tinysrgb&w=700">
+              <source src="https://cdn.pixabay.com/video/2021/08/30/86949-594440153_large.mp4" type="video/mp4" />
+            </video>
+            <span>Festive layers</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials section" aria-label="Customer testimonials">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Customer love</p>
+          <h2>Styled, gifted, and loved across India.</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal"><img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Customer portrait" loading="lazy" /><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>â€œThe packaging felt premium and the necklace looked far more expensive than it was.â€</p><strong>Aarohi Mehta</strong><span>Mumbai</span></article>
+          <article class="testimonial-card reveal"><img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Customer portrait" loading="lazy" /><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>â€œLightweight earrings, no irritation, and perfect for office-to-dinner outfits.â€</p><strong>Priya Nair</strong><span>Bengaluru</span></article>
+          <article class="testimonial-card reveal"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Customer portrait" loading="lazy" /><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><p>â€œI ordered the jhumkas for a function and got compliments all evening.â€</p><strong>Simran Kaur</strong><span>Delhi</span></article>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="faq section" id="faq" aria-label="Frequently asked questions">
+      <div class="container faq-grid">
+        <div>
+          <p class="eyebrow">Questions</p>
+          <h2>Everything to know before you order.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal" open><summary>Is Belleru jewellery skin friendly?</summary><p>Yes. Our artificial jewellery is selected with comfortable, skin-friendly finishes for everyday wear.</p></details>
+          <details class="faq-item reveal"><summary>How do I care for anti-tarnish pieces?</summary><p>Keep pieces away from perfume and water for longer shine, and store them in the pouch after use.</p></details>
+          <details class="faq-item reveal"><summary>Do you deliver across India?</summary><p>Yes, we support Pan India delivery with secure packaging and tracking updates.</p></details>
+          <details class="faq-item reveal"><summary>Can I exchange a product?</summary><p>Eligible products can be exchanged within 7 days if unused and returned with original packaging.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="index.html"><span class="brand-mark">Belleru</span><br><span class="brand-line">Artificial Jewellery</span></a>
+        <p>Premium artificial jewellery for everyday styling, festive dressing and gifting.</p>
+        <div class="socials"><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a></div>
+      </div>
+      <div><h3>Shop</h3><a href="index.html#categories">Categories</a><a href="best-seller.html">Best Sellers</a><a href="new-arrival.html">New Arrivals</a><a href="collections.html#occasion">Occasion</a></div>
+      <div><h3>Support</h3><a href="index.html#faq">FAQ</a><a href="#">Shipping Policy</a><a href="#">Return Policy</a><a href="#">Track Order</a></div>
+      <div><h3>Legal</h3><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Care Guide</a><a href="https://wa.me/919876543210">WhatsApp Support</a></div>
+      <div><h3>Contact</h3><p><i class="fa-solid fa-envelope"></i> hello@belleru.com</p><p><i class="fa-brands fa-whatsapp"></i> +91 98765 43210</p><p><i class="fa-solid fa-location-dot"></i> Jodhpur, Rajasthan</p></div>
+    </div>
+    <div class="container footer-bottom"><p>&copy; 2026 Belleru. All rights reserved.</p><p>Made for India-wide delivery.</p></div>
+  </footer>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close quick view"><i class="fa-solid fa-xmark"></i></button>
+      <img id="modalImage" alt="" />
+      <div class="modal-info">
+        <p class="eyebrow">Quick view</p>
+        <h2 id="modalName">Product name</h2>
+        <div class="modal-price" id="modalPrice"></div>
+        <p>Premium artificial jewellery with a polished finish, comfortable wear and gift-ready packaging.</p>
+        <button class="btn btn-primary" id="modalCart" type="button">Add to Cart</button>
+      </div>
+    </section>
+  </div>
+
+  <aside class="wishlist-drawer" id="wishlistDrawer" aria-hidden="true" aria-label="Wishlist items">
+    <div class="wishlist-drawer__panel">
+      <div class="wishlist-drawer__head">
+        <div>
+          <p class="eyebrow">Saved styles</p>
+          <h2>Your Wishlist</h2>
+        </div>
+        <button class="modal-close" id="wishlistClose" type="button" aria-label="Close wishlist"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="wishlist-items" id="wishlistItems"></div>
+      <p class="wishlist-empty" id="wishlistEmpty">Your wishlist is empty. Tap a heart on any product to save it here.</p>
+      <a class="btn btn-primary wishlist-shop" href="best-seller.html">Continue Shopping</a>
+    </div>
+  </aside>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Cart items">
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__head">
+        <div>
+          <p class="eyebrow">Shopping bag</p>
+          <h2>Your Cart</h2>
+        </div>
+        <button class="modal-close" id="cartClose" type="button" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <p class="cart-empty" id="cartEmpty">Your cart is empty. Add a product to see it here.</p>
+      <div class="cart-summary" id="cartSummary">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">&#8377;0</strong>
+      </div>
+      <button class="btn btn-primary cart-checkout" type="button">Place Order</button>
+      <a class="btn btn-secondary cart-shop" href="best-seller.html">Continue Shopping</a>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Added to cart</span></div>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <a class="whatsapp-float" href="https://wa.me/919876543210" aria-label="WhatsApp support"><i class="fa-brands fa-whatsapp"></i></a>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="frontend-firebase.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+

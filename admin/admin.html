@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belleru Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <p class="eyebrow">Belleru CMS</p>
+      <h1>Admin Login</h1>
+      <label>Email<input type="email" id="loginEmail" required placeholder="admin@belleru.com" /></label>
+      <label>Password<input type="password" id="loginPassword" required placeholder="Password" /></label>
+      <button class="btn primary" type="submit">Login</button>
+      <p class="hint" id="firebaseStatus">Checking Firebase connection...</p>
+    </form>
+  </section>
+
+  <div class="admin-shell hidden" id="adminShell">
+    <aside class="sidebar">
+      <a class="admin-brand" href="index.html">
+        <strong>BELLERU</strong>
+        <span>Admin CMS</span>
+      </a>
+      <nav class="admin-nav">
+        <button class="active" data-panel="dashboard"><i class="fa-solid fa-chart-line"></i>Dashboard</button>
+        <button data-panel="products"><i class="fa-solid fa-gem"></i>Products</button>
+        <button data-panel="categories"><i class="fa-solid fa-layer-group"></i>Categories</button>
+        <button data-panel="orders"><i class="fa-solid fa-box"></i>Orders</button>
+        <button data-panel="content"><i class="fa-solid fa-pen-nib"></i>Website Content</button>
+        <button data-panel="banners"><i class="fa-solid fa-images"></i>Banners</button>
+        <button data-panel="customers"><i class="fa-solid fa-users"></i>Customers</button>
+        <button data-panel="settings"><i class="fa-solid fa-gear"></i>Settings</button>
+        <button id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="eyebrow">Luxury ecommerce control room</p>
+          <h1 id="panelTitle">Dashboard</h1>
+        </div>
+        <div class="admin-actions">
+          <input id="globalSearch" type="search" placeholder="Search products, orders..." />
+          <a class="btn ghost" href="index.html">View Website</a>
+        </div>
+      </header>
+
+      <section class="panel active" id="dashboardPanel">
+        <div class="metric-grid">
+          <article class="metric-card"><span>Total Products</span><strong id="totalProducts">0</strong></article>
+          <article class="metric-card"><span>Total Orders</span><strong id="totalOrders">0</strong></article>
+          <article class="metric-card"><span>Total Customers</span><strong id="totalCustomers">0</strong></article>
+          <article class="metric-card"><span>Revenue</span><strong id="totalRevenue">&#8377;0</strong></article>
+        </div>
+        <div class="dashboard-grid">
+          <section class="admin-card"><h2>Recent Orders</h2><div class="table-wrap"><table><tbody id="recentOrders"></tbody></table></div></section>
+          <section class="admin-card"><h2>Best Selling Products</h2><div id="bestProducts" class="mini-list"></div></section>
+        </div>
+        <section class="admin-card dashboard-products">
+          <div class="section-row">
+            <h2>Current Products</h2>
+            <div class="section-actions">
+              <button class="btn ghost" id="syncProductsBtn" type="button">Import Website Products</button>
+              <button class="btn ghost" id="goProductsPanel" type="button">Manage Products</button>
+            </div>
+          </div>
+          <p class="table-hint" id="productSyncStatus">Waiting for Firebase product sync...</p>
+          <p class="table-hint">Live products currently on website. You can edit price/details or delete directly.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th></th></tr></thead>
+              <tbody id="dashboardProductsTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" id="productsPanel">
+        <div class="admin-grid">
+          <form class="admin-card form-card" id="productForm">
+            <input type="hidden" id="productId" />
+            <h2>Add / Edit Product</h2>
+            <div class="form-grid">
+              <label>Product name<input id="productName" required /></label>
+              <label>Category<select id="productCategory" required></select></label>
+              <label>Original price<input id="productOriginal" type="number" min="0" required /></label>
+              <label>Discounted price<input id="productDiscount" type="number" min="0" required /></label>
+              <label>Rating<input id="productRating" type="number" min="0" max="5" step="0.1" value="4.8" /></label>
+              <label>Stock<input id="productStock" type="number" min="0" value="10" /></label>
+            </div>
+            <label>Description<textarea id="productDescription" rows="4"></textarea></label>
+            <div class="tag-grid">
+              <label><input type="checkbox" value="New Arrival" /> New Arrival</label>
+              <label><input type="checkbox" value="Best Seller" /> Best Seller</label>
+              <label><input type="checkbox" value="Trending" /> Trending</label>
+              <label><input type="checkbox" value="Featured" /> Featured</label>
+            </div>
+            <div class="drop-zone" id="productDrop">Drop product images here or click to upload<input id="productImages" type="file" accept="image/*" multiple /></div>
+            <div class="preview-grid" id="productPreview"></div>
+            <div class="form-actions"><button class="btn primary" id="publishProductBtn" type="submit">Publish Product</button><button class="btn ghost" id="resetProduct" type="button">Reset</button></div>
+          </form>
+          <section class="admin-card">
+            <div class="section-row">
+              <h2>Products</h2>
+              <div class="section-actions">
+                <button class="btn ghost" id="syncProductsBtnSecondary" type="button">Import Website Products</button>
+                <select id="productFilter"><option value="">All categories</option></select>
+              </div>
+            </div>
+            <p class="table-hint">All current website products are listed here. Use edit to change price/details, or delete to remove a product.</p>
+            <div class="table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Tags</th><th>Stock</th><th></th></tr></thead><tbody id="productsTable"></tbody></table></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="categoriesPanel">
+        <div class="admin-grid compact">
+          <form class="admin-card form-card" id="categoryForm">
+            <input type="hidden" id="categoryId" />
+            <h2>Manage Category</h2>
+            <label>Category name<input id="categoryName" required /></label>
+            <label>Sort order<input id="categorySort" type="number" value="1" /></label>
+            <div class="drop-zone" id="categoryDrop">Upload category image<input id="categoryImage" type="file" accept="image/*" /></div>
+            <div class="preview-grid" id="categoryPreview"></div>
+            <button class="btn primary" type="submit">Save Category</button>
+          </form>
+          <section class="admin-card"><h2>Categories</h2><div id="categoriesList" class="cms-list"></div></section>
+        </div>
+      </section>
+
+      <section class="panel" id="ordersPanel">
+        <section class="admin-card">
+          <div class="section-row"><h2>Orders</h2><select id="orderStatusFilter"><option value="">All statuses</option><option>Pending</option><option>Shipped</option><option>Delivered</option><option>Cancelled</option></select></div>
+          <div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th><th></th></tr></thead><tbody id="ordersTable"></tbody></table></div>
+        </section>
+      </section>
+
+      <section class="panel" id="contentPanel">
+        <form class="admin-card form-card wide" id="contentForm">
+          <h2>Website Content</h2>
+          <div class="form-grid">
+            <label>Footer text<input id="contentFooter" /></label>
+            <label>Newsletter text<input id="contentNewsletter" /></label>
+            <label>Email<input id="contentEmail" type="email" /></label>
+            <label>Phone<input id="contentPhone" /></label>
+            <label>Location<input id="contentLocation" /></label>
+            <label>Instagram<input id="contentInstagram" /></label>
+            <label>Facebook<input id="contentFacebook" /></label>
+            <label>Pinterest<input id="contentPinterest" /></label>
+          </div>
+          <button class="btn primary" type="submit">Save Website Content</button>
+        </form>
+        <form class="admin-card form-card wide" id="faqForm">
+          <h2>FAQ Manager</h2>
+          <div class="form-grid">
+            <label>Question<input id="faqQuestion" /></label>
+            <label>Sort order<input id="faqSort" type="number" value="1" /></label>
+          </div>
+          <label>Answer<textarea id="faqAnswer" rows="3"></textarea></label>
+          <button class="btn primary" type="submit">Add FAQ</button>
+          <div id="faqList" class="cms-list"></div>
+        </form>
+      </section>
+
+      <section class="panel" id="bannersPanel">
+        <div class="admin-grid compact">
+          <form class="admin-card form-card" id="bannerForm">
+            <input type="hidden" id="bannerId" />
+            <h2>Hero / Promo Banner</h2>
+            <div class="section-actions">
+              <button class="btn ghost" id="syncBannersBtn" type="button">Import Website Banners</button>
+            </div>
+            <label>Banner title<input id="bannerTitle" /></label>
+            <label>Sort order<input id="bannerSort" type="number" value="1" /></label>
+            <div class="drop-zone" id="bannerDrop">Upload banner image<input id="bannerImage" type="file" accept="image/*" /></div>
+            <div class="preview-grid" id="bannerPreview"></div>
+            <button class="btn primary" type="submit">Publish Banner</button>
+          </form>
+          <section class="admin-card"><h2>Banners</h2><div id="bannersList" class="cms-list"></div></section>
+        </div>
+      </section>
+
+      <section class="panel" id="customersPanel">
+        <section class="admin-card"><h2>Customers</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Orders</th></tr></thead><tbody id="customersTable"></tbody></table></div></section>
+      </section>
+
+      <section class="panel" id="settingsPanel">
+        <section class="admin-card">
+          <h2>Firebase Database Structure</h2>
+          <pre>{
+  products: { name, category, originalPrice, discountedPrice, tags, images, stock, rating, status },
+  categories: { name, image, sortOrder },
+  banners: { title, image, sortOrder, status },
+  orders: { customer, items, total, paymentStatus, orderStatus },
+  customers: { name, email, phone, orderCount },
+  siteContent/global: { footerText, email, phone, location, social links },
+  faqs: { question, answer, sortOrder }
+}</pre>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="adminToast"></div>
+  <div class="confirm hidden" id="confirmModal"><div><h2>Confirm action</h2><p id="confirmText">Are you sure?</p><button class="btn danger" id="confirmYes">Delete</button><button class="btn ghost" id="confirmNo">Cancel</button></div></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
+
