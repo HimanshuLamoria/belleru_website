@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 const $ = (selector, context = document) => context.querySelector(selector);
 const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
@@ -15,7 +15,7 @@ function showToast(message) {
 }
 
 function formatCurrency(value) {
-  return `â‚¹${value.toLocaleString('en-IN')}`;
+  return `₹${value.toLocaleString('en-IN')}`;
 }
 
 function parsePrice(priceText) {
@@ -248,33 +248,37 @@ function closeMobileNav() {
   });
 })();
 
-(function initProductFilters() {
+function currentProductFilter() {
+  return $('.filter-tab.active')?.dataset.filter || 'all';
+}
+
+function applyProductFilter(filter = currentProductFilter()) {
   const tabs = $$('.filter-tab');
   const cards = $$('.product-card');
-  if (!tabs.length || !cards.length) return;
+  tabs.forEach((item) => item.classList.toggle('active', item.dataset.filter === filter));
+  cards.forEach((card) => {
+    const tags = (card.dataset.tags || '').split(/\s+/).filter(Boolean);
+    const show = filter === 'all' || card.dataset.category === filter || tags.includes(filter);
+    card.classList.toggle('hidden', !show);
+  });
+}
 
-  function applyFilter(filter = 'all') {
-    tabs.forEach((item) => item.classList.toggle('active', item.dataset.filter === filter));
-    cards.forEach((card) => {
-      const tags = (card.dataset.tags || '').split(/\s+/);
-      const show = filter === 'all' || card.dataset.category === filter || tags.includes(filter);
-      card.classList.toggle('hidden', !show);
-    });
-  }
+(function initProductFilters() {
+  const tabs = $$('.filter-tab');
+  if (!tabs.length) return;
 
   tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const filter = tab.dataset.filter || 'all';
-      applyFilter(filter);
-    });
+    tab.addEventListener('click', () => applyProductFilter(tab.dataset.filter || 'all'));
   });
 
   $$('[data-category-link], [data-filter-link]').forEach((link) => {
     link.addEventListener('click', () => {
       const filter = link.dataset.categoryLink || link.dataset.filterLink || 'all';
-      window.setTimeout(() => applyFilter(filter), 120);
+      window.setTimeout(() => applyProductFilter(filter), 120);
     });
   });
+
+  applyProductFilter();
 })();
 
 (function initPageContent() {
@@ -437,40 +441,124 @@ function closeMobileNav() {
   startCarousel();
 })();
 
-(function initProductActions() {
-  $$('.add-cart').forEach((button) => {
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+}
+
+function productSlug(value) {
+  return String(value || '').toLowerCase().replace(/&/g, 'and').replace(/nose\s*pins?/g, 'nosepins').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function tagSlug(tag) {
+  const value = String(tag || '').toLowerCase();
+  if (value.includes('new')) return 'new';
+  if (value.includes('best')) return 'best';
+  return productSlug(value);
+}
+
+function productImage(product) {
+  return product.images?.[0] || product.image || 'images/first-image1.jpg';
+}
+
+function productBadge(product) {
+  const tags = Array.isArray(product.tags) ? product.tags : [];
+  return product.badge || tags[0] || '';
+}
+
+function renderRating(ratingValue) {
+  const rating = Math.max(0, Math.min(5, Number(ratingValue || 0)));
+  const stars = Array.from({ length: 5 }, (_, index) => {
+    if (rating >= index + 1) return '<i class="fa-solid fa-star"></i>';
+    if (rating > index) return '<i class="fa-solid fa-star-half-stroke"></i>';
+    return '<i class="fa-regular fa-star"></i>';
+  }).join('');
+  return `<div class="rating">${stars}<span>${rating ? rating.toFixed(1).replace(/\.0$/, '') : '4.8'}</span></div>`;
+}
+
+function renderProductCard(product) {
+  const name = escapeHtml(product.name || 'Untitled Product');
+  const category = escapeHtml(product.category || 'Jewellery');
+  const categorySlug = product.categorySlug || productSlug(product.category || 'jewellery');
+  const tags = Array.isArray(product.tags) ? product.tags : [];
+  const tagSlugs = Array.from(new Set([...(product.tagSlugs || []), ...tags.map(tagSlug)].filter(Boolean)));
+  const image = escapeHtml(productImage(product));
+  const badge = escapeHtml(productBadge(product));
+  const originalPrice = Number(product.originalPrice || 0);
+  const discountedPrice = Number(product.discountedPrice || originalPrice || 0);
+  const discount = originalPrice > discountedPrice ? Math.round(((originalPrice - discountedPrice) / originalPrice) * 100) : 0;
+
+  return `
+    <article class="product-card reveal visible" data-live-product="true" data-category="${escapeHtml(categorySlug)}" data-tags="${escapeHtml(tagSlugs.join(' '))}">
+      <div class="product-media">
+        <img class="product-img" src="${image}" alt="${name}" loading="lazy" />
+        ${badge ? `<span class="badge${tagSlugs.includes('best') ? '' : ' soft'}">${badge}</span>` : ''}
+        <div class="product-actions"><button class="round-btn wishlist-btn" type="button" aria-label="Add ${name} to wishlist"><i class="fa-regular fa-heart"></i></button><button class="round-btn quick-add" type="button" aria-label="Add ${name} to cart"><i class="fa-solid fa-cart-plus"></i></button></div>
+      </div>
+      <div class="product-info"><p>${category}</p><h3>${name}</h3>${renderRating(product.rating)}<div class="price"><strong>&#8377;${discountedPrice.toLocaleString('en-IN')}</strong>${originalPrice && originalPrice !== discountedPrice ? `<s>&#8377;${originalPrice.toLocaleString('en-IN')}</s>` : ''}${discount ? `<span>${discount}% off</span>` : ''}</div><button class="btn add-cart" type="button">Add to Cart</button></div>
+    </article>
+  `;
+}
+
+function bindProductCardActions(context = document) {
+  $$('.add-cart, .quick-add', context).forEach((button) => {
+    if (button.dataset.boundProductAction) return;
+    button.dataset.boundProductAction = 'true';
     button.addEventListener('click', () => {
       const card = button.closest('.product-card');
       addCartItem(getProductData(card));
     });
   });
 
-  $$('.quick-add').forEach((button) => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.product-card');
-      addCartItem(getProductData(card));
-    });
-  });
-  $$('.wishlist-btn').forEach((button) => {
+  $$('.wishlist-btn', context).forEach((button) => {
+    if (button.dataset.boundProductAction) return;
+    button.dataset.boundProductAction = 'true';
     button.setAttribute('aria-pressed', 'false');
     button.addEventListener('click', () => {
       const card = button.closest('.product-card');
       const item = getProductData(card);
       const isLiked = state.wishlist.has(item.name);
 
-      if (isLiked) {
-        state.wishlist.delete(item.name);
-      } else {
-        state.wishlist.set(item.name, item);
-      }
+      if (isLiked) state.wishlist.delete(item.name);
+      else state.wishlist.set(item.name, item);
 
       const nextLiked = !isLiked;
       setProductWishlistState(item.name, nextLiked);
       updateWishlistView();
-
       showToast(nextLiked ? `${item.name} added to wishlist` : `${item.name} removed from wishlist`);
     });
   });
+}
+
+function markProductsReady() {
+  document.body.classList.add('products-ready');
+}
+
+(function initLiveProducts() {
+  const grid = $('#productsGrid');
+  const db = window.BelleruFirebase?.db || (window.firebase?.firestore ? firebase.firestore() : null);
+  if (!grid || !db) {
+    markProductsReady();
+    return;
+  }
+
+  db.collection('products').orderBy('updatedAt', 'desc').onSnapshot((snapshot) => {
+    const products = snapshot.docs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((product) => (product.status || 'active') === 'active');
+
+    if (products.length) {
+      grid.innerHTML = products.map(renderProductCard).join('');
+      bindProductCardActions(grid);
+      applyProductFilter();
+    }
+    markProductsReady();
+  }, (error) => {
+    console.warn('Unable to load live products', error);
+    markProductsReady();
+  });
+})();
+(function initProductActions() {
+  bindProductCardActions(document);
 })();
 
 (function initCartDrawer() {
